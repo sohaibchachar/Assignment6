@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import FileUpload from "./FileUpload";
+import StreamGraph from "./StreamGraph";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    data: null,
+  };
+
+  set_data = (data) => {
+    this.setState({ data });
+  };
+
+  render() {
+    return (
+      <div>
+        <FileUpload set_data={this.set_data} /> {}
+        <StreamGraph data={this.state.data} />
+      </div>
+    );
+  }
 }
 
 export default App;
